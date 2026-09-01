@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GERAK JATI - Pertubuhan Angkatan Jati Diri Negeri Johor (PAJDNJ)</title>
+  
+  <!-- Preload & Load Poppins Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"></noscript>
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS Animation CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0A192F;
+      --navy-light: #112240;
+      --gold: #D4AF37;
+      --gold-light: #F3E5AB;
+      --white: #FFFFFF;
+      --off-white: #F8FAFC;
+      --text-main: #334155;
+      --text-muted: #64748B;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--white);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--navy);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    /* Premium Background Patterns */
+    .bg-grid-pattern {
+      background-image: linear-gradient(to right, #f1f5f9 1px, transparent 1px), linear-gradient(to bottom, #f1f5f9 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    
+    .bg-grid-pattern-dark {
+      background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Agency Elements */
+    .eyebrow {
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .watermark {
+      position: absolute;
+      font-size: 15vw;
+      font-weight: 800;
+      color: rgba(10, 25, 47, 0.03);
+      z-index: 0;
+      white-space: nowrap;
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    /* High-end Cards */
+    .premium-card {
+      background: var(--white);
+      border: 1px solid #f1f5f9;
+      border-radius: 24px;
+      padding: 3rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 20px 25px -5px rgba(0, 0, 0, 0.02);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .premium-card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+      transform: translateY(-5px);
+    }
+
+    /* Buttons */
+    .btn-solid {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2.5rem;
+      background-color: var(--navy);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 12px;
+      transition: all 0.3s;
+      border: 2px solid var(--navy);
+      text-decoration: none;
+    }
+    .btn-solid:hover {
+      background-color: transparent;
+      color: var(--navy);
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2.5rem;
+      background-color: transparent;
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 12px;
+      transition: all 0.3s;
+      border: 2px solid var(--navy);
+      text-decoration: none;
+    }
+    .btn-outline:hover {
+      background-color: var(--navy);
+      color: var(--white);
+    }
+
+    /* Forms */
+    .input-premium {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      background-color: #f8fafc;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+    .input-premium:focus {
+      outline: none;
+      border-color: var(--navy);
+      background-color: var(--white);
+      box-shadow: 0 0 0 4px rgba(10, 25, 47, 0.05);
+    }
+
+    /* Utility overrides for BCL */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+
+  <!-- MASTER WRAPPER (BCL Rule 1) -->
+  <div class="w-full min-h-screen overflow-x-hidden relative" style="width: 100% !important; overflow-x: hidden !important; background-color: #FFFFFF !important;">
+
+    <!-- ========================================== -->
+    <!-- 01. HERO SECTION                           -->
+    <!-- ========================================== -->
+    <section class="relative pt-32 pb-24 md:pt-48 md:pb-32 px-6 flex flex-col items-center justify-center text-center bg-grid-pattern overflow-hidden">
+      <!-- Glow effect -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-50 rounded-full blur-[100px] opacity-70 z-0 pointer-events-none" style="display: flex !important; justify-content: center !important;"></div>
+      
+      <div class="max-w-5xl mx-auto relative z-10" data-aos="fade-up">
+        
+        <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm mb-8">
+          <div class="w-2 h-2 rounded-full" style="background-color: #D4AF37;"></div>
+          <span class="text-xs font-semibold tracking-widest uppercase" style="color: #0A192F;">Pertubuhan Angkatan Jati Diri Negeri Johor</span>
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-bold mb-6 tracking-tight leading-[1.1]" style="color: #0A192F;">
+          Membentuk <span style="color: #D4AF37;">Jati Diri</span>.<br>Menggerakkan Masyarakat.
+        </h1>
+        
+        <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto font-light leading-relaxed" style="color: #475569;">
+          GERAK JATI ialah sebuah gerakan rasmi yang memfokuskan kepada pembentukan nilai individu, kepimpinan, dan penglibatan aktif dalam kemasyarakatan.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center responsive-hero-btn">
+          <a href="#kenali" class="btn-solid w-full sm:w-auto">Kenali GERAK JATI</a>
+          <a href="#sertai" class="btn-outline w-full sm:w-auto">Sertai Gerakan</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 02. INTRODUCTION (AGENCY SPLIT LAYOUT)     -->
+    <!-- ========================================== -->
+    <section id="kenali" class="py-24 px-6 relative" style="background-color: #F8FAFC;">
+      <div class="watermark top-10 right-0 transform translate-x-1/4">IDENTITI</div>
+      
+      <div class="max-w-7xl mx-auto relative z-10">
+        <div class="grid-2-col gap-16 items-center">
+          
+          <div data-aos="fade-right">
+            <span class="eyebrow">Pengenalan</span>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">Sebuah Gerakan Yang Bermula Dengan Jati Diri.</h2>
+            <div class="w-20 h-1 mb-8" style="background-color: #D4AF37;"></div>
+            <p class="text-lg text-slate-600 leading-relaxed mb-6">
+              GERAK JATI membawa idea tentang tindakan, penglibatan dan pergerakan yang berteraskan jati diri, nilai, prinsip dan identiti.
+            </p>
+            <p class="text-lg text-slate-600 leading-relaxed">
+              Kami percaya bahawa masyarakat yang baik bermula daripada individu yang tahu nilai dirinya, berpegang kepada prinsip, bersedia memikul tanggungjawab dan sanggup memberi manfaat.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-6" data-aos="fade-left">
+            <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 flex flex-col justify-center">
+              <h3 class="text-3xl font-bold mb-2" style="color: #0A192F;">GERAK</h3>
+              <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #D4AF37;">Tindakan &middot; Penglibatan &middot; Pergerakan</p>
+              <p class="text-slate-500 text-sm leading-relaxed">Menterjemahkan idea kepada tindakan nyata dan pergerakan masyarakat yang berterusan.</p>
+            </div>
+            
+            <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 flex flex-col justify-center transform md:-translate-x-12">
+              <h3 class="text-3xl font-bold mb-2" style="color: #0A192F;">JATI</h3>
+              <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #D4AF37;">Nilai &middot; Prinsip &middot; Identiti</p>
+              <p class="text-slate-500 text-sm leading-relaxed">Pasak jati diri, prinsip, integriti, dan maruah yang menjadi asas kekuatan individu.</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 03. JATI DIRI (CORE CONCEPT)               -->
+    <!-- ========================================== -->
+    <section class="py-32 px-6 relative bg-white overflow-hidden">
+      <div class="max-w-7xl mx-auto relative z-10">
+        
+        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+          <span class="eyebrow">Konsep Asas</span>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Jati Diri Bukan Sekadar Kata-Kata.</h2>
+          <p class="text-lg text-slate-600">
+            Jati diri terlihat melalui cara kita membawa diri, menjaga amanah, menjalankan tanggungjawab, berani memimpin dan bersedia menyumbang. Kami mahu membentuk individu yang:
+          </p>
+        </div>
+
+        <div class="grid-3-col gap-8">
+          <!-- Card 1 -->
+          <div class="premium-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center mb-6 border border-slate-100">
+              <span class="font-bold text-xl" style="color: #D4AF37;">01</span>
+            </div>
+            <h4 class="text-xl font-bold mb-3">Berprinsip</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Mempunyai nilai, pegangan moral yang teguh dan kefahaman identiti yang jelas.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="premium-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center mb-6 border border-slate-100">
+              <span class="font-bold text-xl" style="color: #D4AF37;">02</span>
+            </div>
+            <h4 class="text-xl font-bold mb-3">Berdisiplin</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Mampu mengawal diri, komited, dan menjalankan amanah dengan penuh tanggungjawab.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="premium-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center mb-6 border border-slate-100">
+              <span class="font-bold text-xl" style="color: #D4AF37;">03</span>
+            </div>
+            <h4 class="text-xl font-bold mb-3">Berani Memimpin</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Sedia tampil ke hadapan, menjadi teladan positif, dan membimbing komuniti.</p>
+          </div>
+          <!-- Card 4 -->
+          <div class="premium-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center mb-6 border border-slate-100">
+              <span class="font-bold text-xl" style="color: #D4AF37;">04</span>
+            </div>
+            <h4 class="text-xl font-bold mb-3">Terlibat Aktif</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Tidak hanya menjadi pemerhati, tetapi menjadi penggerak kepada perubahan.</p>
+          </div>
+          <!-- Card 5 -->
+          <div class="premium-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center mb-6 border border-slate-100">
+              <span class="font-bold text-xl" style="color: #D4AF37;">05</span>
+            </div>
+            <h4 class="text-xl font-bold mb-3">Bermanfaat</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Menggunakan kemampuan, masa, dan kepakaran untuk membantu orang lain.</p>
+          </div>
+          <!-- Card 6 -->
+          <div class="premium-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center mb-6 border border-slate-100">
+              <span class="font-bold text-xl" style="color: #D4AF37;">06</span>
+            </div>
+            <h4 class="text-xl font-bold mb-3">Tanggungjawab</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Bersedia memikul amanah tanpa melepaskan beban kepada pihak lain.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 04. NILAI TERAS (DARK CORPORATE SECTION)   -->
+    <!-- ========================================== -->
+    <section class="py-32 px-6 relative bg-grid-pattern-dark" style="background-color: #0A192F;">
+      <div class="watermark top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/4 opacity-5">NILAI</div>
+      
+      <div class="max-w-7xl mx-auto relative z-10">
+        
+        <div class="grid-2-col-asym gap-16">
+          <div data-aos="fade-right">
+            <span class="eyebrow" style="color: #D4AF37;">Nilai Pegangan</span>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">6 Nilai Teras Gerak Jati.</h2>
+            <p class="text-lg text-slate-400 mb-8 max-w-md">
+              Prinsip yang membimbing setiap langkah, membentuk karektor ahli, dan menjadi kompas dalam menggerakkan masyarakat.
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-8" data-aos="fade-left">
+            <!-- Item 1 -->
+            <div class="border-b border-slate-700/50 pb-6 flex gap-6 items-start">
+              <div class="text-4xl font-bold opacity-20" style="color: #D4AF37; min-width: 60px;">01</div>
+              <div>
+                <h4 class="text-xl font-bold text-white mb-2">JATI DIRI</h4>
+                <p class="text-slate-400 text-sm">Membentuk individu yang mempunyai prinsip, nilai, disiplin, maruah dan tanggungjawab.</p>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="border-b border-slate-700/50 pb-6 flex gap-6 items-start">
+              <div class="text-4xl font-bold opacity-20" style="color: #D4AF37; min-width: 60px;">02</div>
+              <div>
+                <h4 class="text-xl font-bold text-white mb-2">KEPIMPINAN</h4>
+                <p class="text-slate-400 text-sm">Menggalakkan amanah, tanggungjawab, keberanian, menjadi contoh dan membantu orang lain.</p>
+              </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="border-b border-slate-700/50 pb-6 flex gap-6 items-start">
+              <div class="text-4xl font-bold opacity-20" style="color: #D4AF37; min-width: 60px;">03</div>
+              <div>
+                <h4 class="text-xl font-bold text-white mb-2">PERPADUAN</h4>
+                <p class="text-slate-400 text-sm">Menggalakkan kerjasama, kebersamaan, saling menghormati dan hubungan baik.</p>
+              </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="border-b border-slate-700/50 pb-6 flex gap-6 items-start">
+              <div class="text-4xl font-bold opacity-20" style="color: #D4AF37; min-width: 60px;">04</div>
+              <div>
+                <h4 class="text-xl font-bold text-white mb-2">KEMASYARAKATAN</h4>
+                <p class="text-slate-400 text-sm">Melaksanakan usaha dan aktiviti berkualiti yang memberi manfaat praktikal kepada komuniti.</p>
+              </div>
+            </div>
+            <!-- Item 5 -->
+            <div class="border-b border-slate-700/50 pb-6 flex gap-6 items-start">
+              <div class="text-4xl font-bold opacity-20" style="color: #D4AF37; min-width: 60px;">05</div>
+              <div>
+                <h4 class="text-xl font-bold text-white mb-2">PENGLIBATAN</h4>
+                <p class="text-slate-400 text-sm">Menggalakkan ahli dan masyarakat untuk proaktif turut serta, bergerak dan menyumbang.</p>
+              </div>
+            </div>
+            <!-- Item 6 -->
+            <div class="flex gap-6 items-start">
+              <div class="text-4xl font-bold opacity-20" style="color: #D4AF37; min-width: 60px;">06</div>
+              <div>
+                <h4 class="text-xl font-bold text-white mb-2">KEHORMATAN</h4>
+                <p class="text-slate-400 text-sm">Menjaga maruah, amanah, etika percakapan dan tindakan demi keharmonian bersama.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 05. CORE FRAMEWORK (PROCESS)               -->
+    <!-- ========================================== -->
+    <section class="py-32 px-6 bg-white">
+      <div class="max-w-7xl mx-auto text-center" data-aos="fade-up">
+        <span class="eyebrow">Aliran Impak</span>
+        <h2 class="text-4xl md:text-5xl font-bold mb-16 tracking-tight">Dari Jati Diri Kepada Manfaat.</h2>
+        
+        <!-- Modern visual flow -->
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 max-w-5xl mx-auto framework-flex">
+          
+          <div class="flex-1 w-full p-6 bg-slate-50 rounded-2xl border border-slate-100">
+            <h4 class="font-bold text-lg mb-1" style="color: #0A192F;">JATI DIRI</h4>
+            <p class="text-xs text-slate-500">Membentuk Individu</p>
+          </div>
+          
+          <div class="text-slate-300 transform md:-rotate-90 text-2xl font-light">?</div>
+          
+          <div class="flex-1 w-full p-6 bg-slate-50 rounded-2xl border border-slate-100">
+            <h4 class="font-bold text-lg mb-1" style="color: #0A192F;">KEPIMPINAN</h4>
+            <p class="text-xs text-slate-500">Mendorong Penglibatan</p>
+          </div>
+          
+          <div class="text-slate-300 transform md:-rotate-90 text-2xl font-light">?</div>
+
+          <div class="flex-1 w-full p-6 bg-slate-50 rounded-2xl border border-slate-100">
+            <h4 class="font-bold text-lg mb-1" style="color: #0A192F;">PERPADUAN</h4>
+            <p class="text-xs text-slate-500">Membina Masyarakat</p>
+          </div>
+
+          <div class="text-slate-300 transform md:-rotate-90 text-2xl font-light">?</div>
+
+          <div class="flex-1 w-full p-6 rounded-2xl border-2 shadow-md" style="background-color: #0A192F; border-color: #D4AF37;">
+            <h4 class="font-bold text-lg mb-1 text-white">MANFAAT</h4>
+            <p class="text-xs text-slate-300">Hasil Yang Dirasai</p>
+          </div>
+        </div>
+
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto mt-16 leading-relaxed">
+          Bagi GERAK JATI, masyarakat yang bergerak bersama mampu menghasilkan manfaat yang meluas. Namun, ia tidak bermula dengan langkah besar-<span class="font-bold text-slate-800">ia bermula dengan pembentukan diri.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 06. TENTANG PAJDNJ (OVERLAP DESIGN)        -->
+    <!-- ========================================== -->
+    <section class="py-32 px-6 relative" style="background-color: #F8FAFC;">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid-2-col gap-0 shadow-2xl rounded-3xl overflow-hidden" data-aos="fade-up">
+          
+          <!-- Left: Solid Dark -->
+          <div class="p-16 flex flex-col justify-center" style="background-color: #0A192F;">
+            <div class="w-12 h-1 mb-10" style="background-color: #D4AF37;"></div>
+            <h3 class="text-4xl font-bold text-white mb-6 leading-tight">Pertubuhan Angkatan Jati Diri Negeri Johor</h3>
+            <p class="text-slate-300 tracking-widest text-sm font-semibold uppercase">PAJDNJ</p>
+          </div>
+          
+          <!-- Right: Solid White -->
+          <div class="bg-white p-16 flex flex-col justify-center border border-slate-100">
+            <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+              PAJDNJ membawa identiti GERAK JATI sebagai sebuah gerakan yang aktif dalam membentuk jati diri, menggalakkan penglibatan masyarakat dan melaksanakan aktiviti kemasyarakatan.
+            </p>
+            <p class="text-lg text-slate-600 leading-relaxed mb-10">
+              Sebagai sebuah pertubuhan rasmi, PAJDNJ memberi ruang untuk individu bersama-sama membina kepimpinan, hubungan komuniti dan semangat berkhidmat.
+            </p>
+            <div class="inline-block px-6 py-3 rounded-xl bg-slate-50 border border-slate-200">
+              <p class="font-bold text-sm tracking-wide" style="color: #0A192F;">Satu Gerakan. Satu Nilai. Satu Langkah.</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 07. HALA TUJU & MASYARAKAT                 -->
+    <!-- ========================================== -->
+    <section class="py-32 px-6 bg-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+          <span class="eyebrow">Objektif Tindakan</span>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Perjalanan Ke Arah Gerak Jati.</h2>
+          <p class="text-lg text-slate-600">
+            Kekuatan sebuah pertubuhan terletak pada sejauh mana ia mampu membawa individu untuk turun bersama berbakti kepada masyarakat.
+          </p>
+        </div>
+
+        <div class="grid-3-col gap-8 mb-24">
+          <div class="premium-card text-center" data-aos="fade-up" data-aos-delay="0">
+            <h3 class="text-xl font-bold mb-4" style="color: #0A192F;">Membina</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Membentuk jati diri, disiplin dan nilai teras yang kukuh dalam diri setiap individu.</p>
+          </div>
+          <div class="premium-card text-center" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="text-xl font-bold mb-4" style="color: #0A192F;">Menggerakkan</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Menggalakkan penglibatan aktif, mengasah kepimpinan dan memupuk semangat kerjasama.</p>
+          </div>
+          <div class="premium-card text-center" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="text-xl font-bold mb-4" style="color: #0A192F;">Menyumbang</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Melaksanakan inisiatif berterusan yang memberi manfaat langsung kepada kelompok masyarakat.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 08. SERTAI KAMI & LEAD FORM                -->
+    <!-- ========================================== -->
+    <section id="sertai" class="py-32 px-6 relative bg-grid-pattern border-t border-slate-100" style="background-color: #F8FAFC;">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="grid-2-col gap-16">
+          
+          <!-- CTA Copy -->
+          <div data-aos="fade-right" class="flex flex-col justify-center">
+            <span class="eyebrow">Sertai Gerakan</span>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">Anda Juga Boleh Bergerak Bersama Kami.</h2>
+            <div class="w-20 h-1 mb-8" style="background-color: #D4AF37;"></div>
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+              GERAK JATI dibina melalui kepelbagaian individu yang mahu mengambil bahagian. Sama ada melalui masa, tenaga, idea, kemahiran atau pengalaman - setiap sumbangan mempunyai nilai.
+            </p>
+            <ul class="space-y-4 mb-10">
+              <li class="flex items-center gap-4 text-slate-700">
+                <div class="w-2 h-2 rounded-full" style="background-color: #D4AF37;"></div>
+                <span class="font-semibold">Menjadi Ahli Rasmi PAJDNJ</span>
+              </li>
+              <li class="flex items-center gap-4 text-slate-700">
+                <div class="w-2 h-2 rounded-full" style="background-color: #D4AF37;"></div>
+                <span class="font-semibold">Menjadi Sukarelawan Aktiviti</span>
+              </li>
+              <li class="flex items-center gap-4 text-slate-700">
+                <div class="w-2 h-2 rounded-full" style="background-color: #D4AF37;"></div>
+                <span class="font-semibold">Menjalin Kerjasama / Rakan Strategik</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- High-End Lead Form -->
+          <div data-aos="fade-left">
+            <div class="bg-white p-10 md:p-12 rounded-3xl shadow-xl border border-slate-100">
+              <h3 class="text-2xl font-bold mb-2" style="color: #0A192F;">Mahu Bersama Gerak Jati?</h3>
+              <p class="text-slate-500 text-sm mb-8">Tinggalkan maklumat di bawah. Pihak urusetia PAJDNJ akan menghubungi anda.</p>
+              
+              <form action="#" method="POST" class="space-y-5" onsubmit="event.preventDefault(); alert('Terima kasih! Maklumat permohonan anda telah direkodkan. Urusetia PAJDNJ akan menghubungi anda dalam masa terdekat.');">
+                
+                <div>
+                  <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Nama Penuh</label>
+                  <input type="text" required class="input-premium" placeholder="Nama mengikut MyKad">
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 form-grid-2">
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Nombor Telefon</label>
+                    <input type="tel" required class="input-premium" placeholder="01X-XXXXXXX">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Daerah</label>
+                    <select class="input-premium" required>
+                      <option value="" disabled selected>Pilih Daerah</option>
+                      <option value="Johor Bahru">Johor Bahru</option>
+                      <option value="Batu Pahat">Batu Pahat</option>
+                      <option value="Kluang">Kluang</option>
+                      <option value="Kulai">Kulai</option>
+                      <option value="Muar">Muar</option>
+                      <option value="Kota Tinggi">Kota Tinggi</option>
+                      <option value="Segamat">Segamat</option>
+                      <option value="Pontian">Pontian</option>
+                      <option value="Tangkak">Tangkak</option>
+                      <option value="Mersing">Mersing</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3 mt-2">Bentuk Penglibatan</label>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-600 form-checkbox-grid">
+                    <label class="flex items-center gap-3 cursor-pointer p-3 border border-slate-100 rounded-lg hover:bg-slate-50 transition">
+                      <input type="checkbox" class="w-4 h-4 rounded text-navy focus:ring-navy"> Menjadi Ahli
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer p-3 border border-slate-100 rounded-lg hover:bg-slate-50 transition">
+                      <input type="checkbox" class="w-4 h-4 rounded text-navy focus:ring-navy"> Sukarelawan
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer p-3 border border-slate-100 rounded-lg hover:bg-slate-50 transition">
+                      <input type="checkbox" class="w-4 h-4 rounded text-navy focus:ring-navy"> Jalin Kerjasama
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer p-3 border border-slate-100 rounded-lg hover:bg-slate-50 transition">
+                      <input type="checkbox" class="w-4 h-4 rounded text-navy focus:ring-navy"> Maklumat Lanjut
+                    </label>
+                  </div>
+                </div>
+
+                <div class="pt-4">
+                  <button type="submit" class="w-full btn-solid !py-4 !text-lg !rounded-xl shadow-lg shadow-navy/20">
+                    Hantar Permohonan
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 09. FINAL MINIMALIST STATEMENT             -->
+    <!-- ========================================== -->
+    <section class="py-24 px-6 bg-white text-center">
+      <div class="max-w-4xl mx-auto" data-aos="fade-up">
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-8" style="color: #0A192F;">
+          JATI DIRI MEMBENTUK INDIVIDU.<br>
+          INDIVIDU MENGGERAKKAN MASYARAKAT.
+        </h2>
+        <div class="inline-flex flex-col items-center">
+          <span class="font-bold tracking-widest text-lg" style="color: #D4AF37;">GERAK JATI</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 10. PREMIUM FOOTER                         -->
+    <!-- ========================================== -->
+    <footer class="pt-20 pb-10 px-6 border-t" style="background-color: #0A192F; border-color: #112240;">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 footer-grid">
+          
+          <div>
+            <h3 class="text-2xl font-bold text-white mb-2">PAJDNJ</h3>
+            <p class="text-sm tracking-widest uppercase mb-6 font-semibold" style="color: #D4AF37;">GERAK JATI</p>
+            <p class="text-slate-400 text-sm max-w-sm leading-relaxed">
+              Sebuah gerakan rasmi yang aktif dalam membentuk jati diri, menggalakkan penglibatan masyarakat dan melaksanakan aktiviti kemasyarakatan di Negeri Johor.
+            </p>
+          </div>
+
+          <div class="flex flex-col md:items-end justify-start gap-4">
+            <h4 class="text-white font-semibold text-sm tracking-wider uppercase mb-2">Pautan Pantas</h4>
+            <a href="#kenali" class="text-slate-400 hover:text-white transition text-sm">Tentang PAJDNJ</a>
+            <a href="#sertai" class="text-slate-400 hover:text-white transition text-sm">Sertai Gerakan</a>
+            <a href="#" class="text-slate-400 hover:text-white transition text-sm">Polisi Privasi</a>
+            <a href="#" class="text-slate-400 hover:text-white transition text-sm">Terma Penggunaan</a>
+          </div>
+        </div>
+
+        <div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4 footer-bottom" style="border-color: #112240;">
+          <p class="text-xs text-slate-500 font-medium tracking-wide">
+            &copy; 2026 Pertubuhan Angkatan Jati Diri Negeri Johor. Hak Cipta Terpelihara.
+          </p>
+          <div class="flex gap-6">
+            <a href="#" class="text-slate-500 hover:text-white transition text-sm font-semibold">FB</a>
+            <a href="#" class="text-slate-500 hover:text-white transition text-sm font-semibold">IG</a>
+            <a href="#" class="text-slate-500 hover:text-white transition text-sm font-semibold">TK</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  
+  <!-- BCL-Proof Responsive JS (Rule 7) -->
+  <script>
+    function initAOS() { 
+      if (window.AOS) AOS.init({ duration: 800, once: true, offset: 50 }); 
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAOS);
+    } else { 
+      initAOS(); 
+    }
+
+    function applyResponsive() {
+      var w = window.innerWidth;
+      var mobile = w <= 768;
+      
+      function setS(el, prop, val) {
+        var cur = el.getAttribute('style') || '';
+        var re  = new RegExp(prop.replace(/-/g,'\\-') + '\\s*:[^;]*(!important)?;?', 'gi');
+        cur = cur.replace(re, '').replace(/\s+/g,' ').trim();
+        el.setAttribute('style', cur + (cur.length > 0 && !cur.endsWith(';') ? ';' : '') + ' ' + prop + ': ' + val + ' !important;');
+      }
+
+      // Responsive Grids
+      document.querySelectorAll('.grid-2-col').forEach(function(el) {
+        setS(el, 'display', 'grid');
+        setS(el, 'grid-template-columns', mobile ? '1fr' : '1fr 1fr');
+      });
+
+      document.querySelectorAll('.grid-2-col-asym').forEach(function(el) {
+        setS(el, 'display', 'grid');
+        setS(el, 'grid-template-columns', mobile ? '1fr' : '1fr 1.5fr');
+      });
+
+      document.querySelectorAll('.grid-3-col').forEach(function(el) {
+        setS(el, 'display', 'grid');
+        setS(el, 'grid-template-columns', mobile ? '1fr' : 'repeat(3, 1fr)');
+      });
+
+      // Internal Form Grids
+      document.querySelectorAll('.form-grid-2').forEach(function(el) {
+        if(mobile) {
+           setS(el, 'grid-template-columns', '1fr');
+        } else {
+           // BCL specific overwrite handle
+           el.style.gridTemplateColumns = '1fr 1fr';
+        }
+      });
+      
+      document.querySelectorAll('.form-checkbox-grid').forEach(function(el) {
+         if(mobile) {
+           setS(el, 'grid-template-columns', '1fr');
+        } else {
+           el.style.gridTemplateColumns = '1fr 1fr';
+        }
+      });
+
+      // Flex Directions
+      document.querySelectorAll('.responsive-hero-btn').forEach(function(el) {
+        setS(el, 'flex-direction', mobile ? 'column' : 'row');
+        setS(el, 'width', mobile ? '100%' : 'auto');
+      });
+
+      document.querySelectorAll('.framework-flex').forEach(function(el) {
+        setS(el, 'flex-direction', mobile ? 'column' : 'row');
+      });
+
+      document.querySelectorAll('.footer-grid').forEach(function(el) {
+        setS(el, 'grid-template-columns', mobile ? '1fr' : '1fr 1fr');
+        setS(el, 'text-align', mobile ? 'center' : 'left');
+      });
+      
+      document.querySelectorAll('.footer-bottom').forEach(function(el) {
+        setS(el, 'flex-direction', mobile ? 'column-reverse' : 'row');
+        setS(el, 'text-align', 'center');
+      });
+    }
+
+    applyResponsive();
+    window.addEventListener('resize', applyResponsive, { passive: true });
+  </script>
+</body>
+</html>
